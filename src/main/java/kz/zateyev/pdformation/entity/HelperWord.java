@@ -60,7 +60,7 @@ public class HelperWord {
                 // Заполняем значения для полей слияния
                 Map<DataFieldName, String> map =
                         new HashMap<DataFieldName, String>();
-                map.put(new DataFieldName("GreetingLine"), row.get("NAME").toString());
+                map.put(new DataFieldName("Имя"), row.get("NAME").toString());
                 map.put(new DataFieldName("Город"), row.get("CITY").toString());
                 map.put(new DataFieldName("Организация"), "Рога и копыта");
                 data.add(map);
