@@ -52,7 +52,7 @@ public class HelperWord {
                 // Извлекаем данные о существующем объекте MS Word
                 WordprocessingMLPackage wordMLPackage =
                         WordprocessingMLPackage
-                                .load(new File("C:\\Users\\Жасулан\\Desktop\\tmp\\template.docx"));
+                                .load(new File("C:\\Users\\Жасулан\\Desktop\\tmp\\template2.docx"));
                 // Создаем объект для вставки значений в поля слияния
                 List<Map<DataFieldName, String>> data =
                         new ArrayList<Map<DataFieldName, String>>();
@@ -62,7 +62,7 @@ public class HelperWord {
                         new HashMap<DataFieldName, String>();
                 map.put(new DataFieldName("Имя"), row.get("NAME").toString());
                 map.put(new DataFieldName("Город"), row.get("CITY").toString());
-                map.put(new DataFieldName("Организация"), "Рога и копыта");
+                map.put(new DataFieldName("Адрес_1"), "улица Кунаева 8");
                 data.add(map);
                 // Создаем новый объект MS Word на основе существующего и
                 // значений полей слияния
