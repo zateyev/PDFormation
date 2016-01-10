@@ -1,6 +1,6 @@
 package kz.zateyev.pdformation.entity;
 
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;

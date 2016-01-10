@@ -17,22 +17,21 @@ public class Marker {
     public Set<String> getMarkers() {
         Set<String> marker = new HashSet<String>();
         String regex = "(\\{\\w*?\\})";
-        String text = null;
+        StringBuilder sb = new StringBuilder();
         for (XWPFParagraph p : document.getParagraphs()) {
-            text = getText(p);
+            sb.append(getText(p));
         }
         for (XWPFTable tbl : document.getTables()) {
             for (XWPFTableRow row : tbl.getRows()) {
                 for (XWPFTableCell cell : row.getTableCells()) {
                     for (XWPFParagraph p : cell.getParagraphs()) {
-                        text = getText(p);
+                        sb.append(getText(p));
                     }
                 }
             }
         }
         Pattern pattern = Pattern.compile(regex);
-        assert text != null;
-        Matcher matcher = pattern.matcher(text);
+        Matcher matcher = pattern.matcher(sb.toString());
         while (matcher.find()) {
             marker.add(matcher.group());
         }
