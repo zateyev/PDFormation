@@ -4,28 +4,29 @@ import org.apache.poi.xwpf.usermodel.*;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Substitute {
     private XWPFDocument document;
-    private String toReplace;
-    private String replacement;
+    private Map<String, String> map;
     private String outpath = "D:\\tmp2\\output.docx";
 
-    public Substitute(XWPFDocument document, String toReplace, String replacement) {
+    public Substitute(XWPFDocument document, Map<String, String> map) {
         this.document = document;
-        this.toReplace = toReplace;
-        this.replacement = replacement;
+        this.map = map;
     }
 
     public void createDoc() {
         for (XWPFParagraph p : document.getParagraphs()) {
-            replace(p);
+            replace(p, map);
         }
         for (XWPFTable tbl : document.getTables()) {
             for (XWPFTableRow row : tbl.getRows()) {
                 for (XWPFTableCell cell : row.getTableCells()) {
                     for (XWPFParagraph p : cell.getParagraphs()) {
-                        replace(p);
+                        replace(p, map);
                     }
                 }
             }
@@ -37,7 +38,7 @@ public class Substitute {
         }
     }
 
-    private void replace(XWPFParagraph p) {
+    private void replace(XWPFParagraph p, Map<String, String> map) {
         int numberOfRuns = p.getRuns().size();
         // Collate text of all runs
         StringBuilder sb = new StringBuilder();
@@ -53,7 +54,11 @@ public class Substitute {
             for (int i = numberOfRuns; i >= 0; i--) {
                 p.removeRun(i);
             }
-            String text = sb.toString().replace(toReplace, replacement);
+            String text = sb.toString();
+            Set<String> markers = map.keySet();
+            for (String marker : markers) {
+                text = text.replace(marker, map.get(marker));
+            }
             // Add new run with updated text
             XWPFRun run = p.createRun();
             run.setText(text);
