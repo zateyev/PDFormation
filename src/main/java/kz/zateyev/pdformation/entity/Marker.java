@@ -8,13 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Marker {
-    XWPFDocument document;
 
-    public Marker(XWPFDocument document) {
-        this.document = document;
-    }
-
-    public Set<String> getMarkers() {
+    public Set<String> getMarkers(XWPFDocument document) {
         Set<String> marker = new HashSet<String>();
         String regex = "(\\{\\w*?\\})";
         StringBuilder sb = new StringBuilder();
@@ -47,5 +42,13 @@ public class Marker {
             }
         }
         return sb.toString();
+    }
+
+    public Set<String> getMarkers(Pack pack) {
+        Set<String> markers = new HashSet<String>();
+        for (XWPFDocument document : pack.getDocuments()) {
+            markers.addAll(getMarkers(document));
+        }
+        return markers;
     }
 }

@@ -8,17 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class Substitute {
-    private XWPFDocument document;
+public class Replacer {
     private Map<String, String> map;
-    private String outpath = "D:\\tmp2\\output.docx";
+    private String outpath = "D:\\tmp2\\output";
 
-    public Substitute(XWPFDocument document, Map<String, String> map) {
-        this.document = document;
+    public Replacer(Map<String, String> map) {
         this.map = map;
     }
 
-    public void createDoc() {
+    public void insertReplacers(XWPFDocument document, int i) {
         for (XWPFParagraph p : document.getParagraphs()) {
             replace(p, map);
         }
@@ -32,7 +30,7 @@ public class Substitute {
             }
         }
         try {
-            document.write(new FileOutputStream(outpath));
+            document.write(new FileOutputStream(outpath + i + ".docx"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,6 +61,14 @@ public class Substitute {
             XWPFRun run = p.createRun();
             run.setText(text);
             p.addRun(run);
+        }
+    }
+
+    public void insertReplacers(Pack pack) {
+        int i = 0;
+        for (XWPFDocument document : pack.getDocuments()) {
+            insertReplacers(document, i);
+            i++;
         }
     }
 }
