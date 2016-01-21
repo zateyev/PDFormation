@@ -1,5 +1,10 @@
 package kz.zateyev.pdformation.servlet;
 
+import kz.zateyev.pdformation.entity.Marker;
+import kz.zateyev.pdformation.entity.Tag;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -7,18 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
-import java.net.URISyntaxException;
+import java.util.Set;
 
 @MultipartConfig
 public class DocxUploadServlet extends HttpServlet {
-//    private final static Logger LOGGER = Logger.getLogger(DocxUploadServlet.class.getCanonicalName());
+    private String filepath;
+
+    //    private final static Logger LOGGER = Logger.getLogger(DocxUploadServlet.class.getCanonicalName());
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
         Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
         String fileName = filePart.getSubmittedFileName();
         InputStream fileContent = filePart.getInputStream();
-        OutputStream out = new FileOutputStream(new File("D:\\tmp2" + File.separator + fileName));
+        filepath = "D:\\tmp2" + File.separator + fileName;
+        OutputStream out = new FileOutputStream(new File(filepath));
 
+        //uploading file
         int read;
         final byte[] bytes = new byte[1024];
         while ((read = fileContent.read(bytes)) != -1) {
@@ -27,9 +35,14 @@ public class DocxUploadServlet extends HttpServlet {
         out.close();
         fileContent.close();
 
-        PrintWriter writer = response.getWriter();
-        writer.println("File " + fileName + " uploaded");
-        writer.close();
+        //extracting tags from file
+        XWPFDocument doc = null;
+        doc = new XWPFDocument(new FileInputStream(filepath));
+        Marker marker = new Marker();
+        Set<Tag> tags = marker.getTags(doc);
+        request.setAttribute("tags", tags);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/generated-form.jsp");
+        dispatcher.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
 
 public class Marker {
 
-    public Set<String> getMarkers(XWPFDocument document) {
-        Set<String> marker = new HashSet<String>();
+    public Set<Tag> getTags(XWPFDocument document) {
+        Set<Tag> tags = new HashSet<Tag>();
         String regex = "(\\{\\w*?\\})";
         StringBuilder sb = new StringBuilder();
         for (XWPFParagraph p : document.getParagraphs()) {
@@ -28,9 +28,9 @@ public class Marker {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(sb.toString());
         while (matcher.find()) {
-            marker.add(matcher.group());
+            tags.add(new Tag(matcher.group()));
         }
-        return marker;
+        return tags;
     }
 
     private String getText(XWPFParagraph p) {
@@ -44,11 +44,11 @@ public class Marker {
         return sb.toString();
     }
 
-    public Set<String> getMarkers(Pack pack) {
-        Set<String> markers = new HashSet<String>();
+    public Set<Tag> getTags(Pack pack) {
+        Set<Tag> tags = new HashSet<Tag>();
         for (XWPFDocument document : pack.getDocuments()) {
-            markers.addAll(getMarkers(document));
+            tags.addAll(getTags(document));
         }
-        return markers;
+        return tags;
     }
 }

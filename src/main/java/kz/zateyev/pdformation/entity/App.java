@@ -24,7 +24,7 @@ public class App {
         Pack pack = new Pack("Hosting", documents);
 
         /*Marker marker = new Marker();
-        System.out.println(marker.getMarkers(pack));*/
+        System.out.println(marker.getTags(pack));*/
 
         Map<String, String> map = new HashMap<String, String>();
         map.put("{RegularExpression}", "Регулярное выражение");
