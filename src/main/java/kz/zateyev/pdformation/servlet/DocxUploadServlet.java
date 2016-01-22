@@ -7,10 +7,7 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.*;
 import java.util.Set;
 
@@ -40,7 +37,9 @@ public class DocxUploadServlet extends HttpServlet {
         doc = new XWPFDocument(new FileInputStream(filepath));
         Marker marker = new Marker();
         Set<Tag> tags = marker.getTags(doc);
-        request.setAttribute("tags", tags);
+        HttpSession session = request.getSession(true);
+        session.setAttribute("tags", tags);
+        session.setAttribute("filepath", filepath);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/generated-form.jsp");
         dispatcher.forward(request, response);
     }

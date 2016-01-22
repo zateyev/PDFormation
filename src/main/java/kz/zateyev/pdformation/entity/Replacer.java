@@ -10,7 +10,6 @@ import java.util.Set;
 
 public class Replacer {
     private Map<String, String> map;
-    private String outpath = "D:\\tmp2\\output";
 
     public Replacer(Map<String, String> map) {
         this.map = map;
@@ -30,6 +29,7 @@ public class Replacer {
             }
         }
         try {
+            String outpath = "D:\\tmp2\\output";
             document.write(new FileOutputStream(outpath + i + ".docx"));
         } catch (IOException e) {
             e.printStackTrace();

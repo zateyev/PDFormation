@@ -23,11 +23,11 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>FormGeneratorServlet</servlet-name>
-        <servlet-class>kz.zateyev.pdformation.servlet.FormGeneratorServlet</servlet-class>
+        <servlet-name>FillerServlet</servlet-name>
+        <servlet-class>kz.zateyev.pdformation.servlet.FillerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>FormGeneratorServlet</servlet-name>
-        <url-pattern>/formGenerator</url-pattern>
+        <servlet-name>FillerServlet</servlet-name>
+        <url-pattern>/filler</url-pattern>
     </servlet-mapping>
 </web-app>

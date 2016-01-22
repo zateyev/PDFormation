@@ -7,12 +7,12 @@
   <title>Form to fill template</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/formGenerator" method="post" class="form">
-    <jsp:useBean id="tags" scope="request" type="java.util.Set"/>
+<form action="${pageContext.request.contextPath}/filler" method="post" class="form">
+    <jsp:useBean id="tags" scope="session" type="java.util.Set"/>
     <c:forEach items="${tags}" var="tag">
         <p>
             <label>${tag.name}</label>
-            <input name="tagName" type="text" placeholder="${tag.name}">
+            <input name="${tag.name}" type="text" placeholder="${tag.name}">
         </p>
     </c:forEach>
   <button>Submit</button>
