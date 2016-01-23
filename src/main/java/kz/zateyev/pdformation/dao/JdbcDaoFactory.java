@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.util.ResourceBundle;
 
 public class JdbcDaoFactory extends DaoFactory {
-    private static ResourceBundle resourceBundle = ResourceBundle.getBundle("h2Database");
+    private static ResourceBundle resourceBundle = ResourceBundle.getBundle("app");
     private static String driverName = resourceBundle.getString("db.driver");
     private static String url = resourceBundle.getString("db.url");
     private static String user = resourceBundle.getString("db.user");

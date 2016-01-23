@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Pack {
     private String name;
-    private List<XWPFDocument> documents;
+    private List<Document> documents;
 
     public Pack() {
     }
 
-    public Pack(String name, List<XWPFDocument> documents) {
+    public Pack(String name, List<Document> documents) {
         this.name = name;
         this.documents = documents;
     }
@@ -24,11 +24,11 @@ public class Pack {
         this.name = name;
     }
 
-    public List<XWPFDocument> getDocuments() {
+    public List<Document> getDocuments() {
         return documents;
     }
 
-    public void setDocuments(List<XWPFDocument> documents) {
+    public void setDocuments(List<Document> documents) {
         this.documents = documents;
     }
 }

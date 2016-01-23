@@ -8,6 +8,6 @@
 <body>
 <h2>Документ сформирован</h2>
 <jsp:useBean id="fileName" scope="session" type="java.lang.String"/>
-<p>Документ <a href="${pageContext.request.contextPath}/download?filename=output0.docx">${fileName}</a> готов к скачиванию</p>
+<p>Документ <a href="${pageContext.request.contextPath}/download?filename=${fileName}">${fileName}</a> готов к скачиванию</p>
 </body>
 </html>

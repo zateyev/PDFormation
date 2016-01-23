@@ -9,14 +9,14 @@ import java.util.regex.Pattern;
 
 public class Marker {
 
-    public Set<Tag> getTags(XWPFDocument document) {
+    public Set<Tag> getTags(Document document) {
         Set<Tag> tags = new HashSet<Tag>();
         String regex = "(\\{\\w*?\\})";
         StringBuilder sb = new StringBuilder();
-        for (XWPFParagraph p : document.getParagraphs()) {
+        for (XWPFParagraph p : document.getXwpfDocument().getParagraphs()) {
             sb.append(getText(p));
         }
-        for (XWPFTable tbl : document.getTables()) {
+        for (XWPFTable tbl : document.getXwpfDocument().getTables()) {
             for (XWPFTableRow row : tbl.getRows()) {
                 for (XWPFTableCell cell : row.getTableCells()) {
                     for (XWPFParagraph p : cell.getParagraphs()) {
@@ -47,7 +47,7 @@ public class Marker {
 
     public Set<Tag> getTags(Pack pack) {
         Set<Tag> tags = new HashSet<Tag>();
-        for (XWPFDocument document : pack.getDocuments()) {
+        for (Document document : pack.getDocuments()) {
             tags.addAll(getTags(document));
         }
         return tags;

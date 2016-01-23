@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 public class Replacer {
@@ -15,11 +16,13 @@ public class Replacer {
         this.map = map;
     }
 
-    public void insertReplacers(XWPFDocument document, int i) {
-        for (XWPFParagraph p : document.getParagraphs()) {
+    public void insertReplacers(Document document) {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("app");
+        String outpath = resourceBundle.getString("formed.document.location");
+        for (XWPFParagraph p : document.getXwpfDocument().getParagraphs()) {
             replace(p, map);
         }
-        for (XWPFTable tbl : document.getTables()) {
+        for (XWPFTable tbl : document.getXwpfDocument().getTables()) {
             for (XWPFTableRow row : tbl.getRows()) {
                 for (XWPFTableCell cell : row.getTableCells()) {
                     for (XWPFParagraph p : cell.getParagraphs()) {
@@ -29,8 +32,7 @@ public class Replacer {
             }
         }
         try {
-            String outpath = "D:\\tmp2\\output";
-            document.write(new FileOutputStream(outpath + i + ".docx"));
+            document.getXwpfDocument().write(new FileOutputStream(outpath + document.getName()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,10 +67,8 @@ public class Replacer {
     }
 
     public void insertReplacers(Pack pack) {
-        int i = 0;
-        for (XWPFDocument document : pack.getDocuments()) {
-            insertReplacers(document, i);
-            i++;
+        for (Document document : pack.getDocuments()) {
+            insertReplacers(document);
         }
     }
 }

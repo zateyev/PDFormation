@@ -21,7 +21,7 @@ public class App {
         List<XWPFDocument> documents = new ArrayList<XWPFDocument>();
         documents.add(doc);
         documents.add(doc2);
-        Pack pack = new Pack("Hosting", documents);
+        //Pack pack = new Pack("Hosting", documents);
 
         /*Marker marker = new Marker();
         System.out.println(marker.getTags(pack));*/
@@ -36,7 +36,7 @@ public class App {
         map.put("{str2}", "стр2");
         map.put("{str3}", "стр3");
         Replacer replacer = new Replacer(map);
-        replacer.insertReplacers(pack);
+        //replacer.insertReplacers(pack);
 
     }
 }
