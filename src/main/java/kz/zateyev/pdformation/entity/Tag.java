@@ -17,10 +17,14 @@ public class Tag {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Tag) {
-            Tag anotherTag = (Tag)obj;
-            return this.name.equals(anotherTag.getName());
-        }
-        return false;
+        if (this == obj) return true;
+        if (!(obj instanceof Tag)) return false;
+        Tag tag = (Tag) obj;
+        return getName().equals(tag.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
     }
 }

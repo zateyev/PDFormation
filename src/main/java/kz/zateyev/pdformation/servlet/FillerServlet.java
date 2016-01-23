@@ -4,6 +4,7 @@ import kz.zateyev.pdformation.entity.Replacer;
 import kz.zateyev.pdformation.entity.Tag;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,8 @@ public class FillerServlet extends HttpServlet {
         }
         Replacer replacer = new Replacer(map);
         replacer.insertReplacers(document, 0);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/formed-document.jsp");
+        dispatcher.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

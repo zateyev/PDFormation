@@ -12,10 +12,10 @@ import java.io.*;
 import java.util.Set;
 
 @MultipartConfig
-public class DocxUploadServlet extends HttpServlet {
+public class UploadServlet extends HttpServlet {
     private String filepath;
 
-    //    private final static Logger LOGGER = Logger.getLogger(DocxUploadServlet.class.getCanonicalName());
+    //    private final static Logger LOGGER = Logger.getLogger(UploadServlet.class.getCanonicalName());
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
         String fileName = filePart.getSubmittedFileName();
@@ -40,6 +40,7 @@ public class DocxUploadServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         session.setAttribute("tags", tags);
         session.setAttribute("filepath", filepath);
+        session.setAttribute("fileName", fileName);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/generated-form.jsp");
         dispatcher.forward(request, response);
     }

@@ -28,7 +28,8 @@ public class Marker {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(sb.toString());
         while (matcher.find()) {
-            tags.add(new Tag(matcher.group()));
+            Tag tag = new Tag(matcher.group());
+            tags.add(tag);
         }
         return tags;
     }
