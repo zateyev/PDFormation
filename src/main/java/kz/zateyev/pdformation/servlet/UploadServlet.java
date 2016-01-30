@@ -20,6 +20,7 @@ public class UploadServlet extends HttpServlet {
 
     //    private final static Logger LOGGER = Logger.getLogger(UploadServlet.class.getCanonicalName());
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
         String fileName = filePart.getSubmittedFileName();
         InputStream fileContent = filePart.getInputStream();

@@ -1,12 +1,13 @@
 package kz.zateyev.pdformation.entity;
 
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-
+import java.util.ArrayList;
 import java.util.List;
 
-public class Pack {
+public class Pack extends BaseEntity {
     private String name;
     private List<Document> documents;
+    String location;
+    User user;
 
     public Pack() {
     }
@@ -30,5 +31,21 @@ public class Pack {
 
     public void setDocuments(List<Document> documents) {
         this.documents = documents;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

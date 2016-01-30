@@ -27,4 +27,9 @@ public class Tag {
     public int hashCode() {
         return getName().hashCode();
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

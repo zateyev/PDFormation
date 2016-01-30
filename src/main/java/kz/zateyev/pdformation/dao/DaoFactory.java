@@ -13,4 +13,6 @@ public abstract class DaoFactory {
     }
 
     public abstract UserDao getUserDao();
+    public abstract PackDao getPackDao();
+    public abstract DocumentDao getDocumentDao();
 }

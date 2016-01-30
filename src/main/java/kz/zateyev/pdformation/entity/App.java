@@ -18,15 +18,15 @@ public class App {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        List<XWPFDocument> documents = new ArrayList<XWPFDocument>();
-        documents.add(doc);
-        documents.add(doc2);
-        //Pack pack = new Pack("Hosting", documents);
+        List<Document> documents = new ArrayList<>();
+        documents.add(new Document(doc, "tmpl.docx"));
+        documents.add(new Document(doc2, "tmpl2.docx"));
+        Pack pack = new Pack("Hosting", documents);
 
-        /*Marker marker = new Marker();
-        System.out.println(marker.getTags(pack));*/
+        Marker marker = new Marker();
+        System.out.println(marker.getTags(pack));
 
-        Map<String, String> map = new HashMap<String, String>();
+        /*Map<String, String> map = new HashMap<String, String>();
         map.put("{RegularExpression}", "Регулярное выражение");
         map.put("{RegularExpression2}", "Регулярное выражение2");
         map.put("{Word}", "Ворд");
@@ -36,7 +36,6 @@ public class App {
         map.put("{str2}", "стр2");
         map.put("{str3}", "стр3");
         Replacer replacer = new Replacer(map);
-        //replacer.insertReplacers(pack);
-
+        replacer.insertReplacers(pack);*/
     }
 }

@@ -39,4 +39,22 @@
         <servlet-name>DownloadServlet</servlet-name>
         <url-pattern>/download</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SignInServlet</servlet-name>
+        <servlet-class>kz.zateyev.pdformation.servlet.SignInServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignInServlet</servlet-name>
+        <url-pattern>/signIn</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MultipleUploadServlet</servlet-name>
+        <servlet-class>kz.zateyev.pdformation.servlet.MultipleUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MultipleUploadServlet</servlet-name>
+        <url-pattern>/multipleUpload</url-pattern>
+    </servlet-mapping>
 </web-app>

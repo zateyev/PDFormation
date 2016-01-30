@@ -26,4 +26,14 @@ public class JdbcDaoFactory extends DaoFactory {
     public UserDao getUserDao() {
         return new JdbcUserDao();
     }
+
+    @Override
+    public PackDao getPackDao() {
+        return new JdbcPackDao();
+    }
+
+    @Override
+    public DocumentDao getDocumentDao() {
+        return new JdbcDocumentDao();
+    }
 }

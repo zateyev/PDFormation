@@ -2,9 +2,10 @@ package kz.zateyev.pdformation.entity;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
-public class Document {
+public class Document extends BaseEntity {
     private XWPFDocument xwpfDocument;
     private String name;
+    Pack pack;
 
     public Document(XWPFDocument xwpfDocument, String name) {
         this.xwpfDocument = xwpfDocument;
@@ -25,5 +26,13 @@ public class Document {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Pack getPack() {
+        return pack;
+    }
+
+    public void setPack(Pack pack) {
+        this.pack = pack;
     }
 }

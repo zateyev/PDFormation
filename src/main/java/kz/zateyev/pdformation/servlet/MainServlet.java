@@ -11,5 +11,6 @@ public class MainServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect(request.getContextPath() + "/create-pack.jsp");
     }
 }

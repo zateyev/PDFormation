@@ -15,6 +15,7 @@ public class DownloadServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String fileName = request.getParameter("filename");
         String fileType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
         response.setContentType(fileType);
