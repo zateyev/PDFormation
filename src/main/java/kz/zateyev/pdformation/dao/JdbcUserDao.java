@@ -80,7 +80,7 @@ public class JdbcUserDao implements UserDao {
             preparedStatement.executeUpdate();
             ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
             generatedKeys.next();
-            long id = generatedKeys.getLong(1);
+            Long id = generatedKeys.getLong(1);
             user.setId(id);
         } catch (SQLException e) {
             throw new DaoException(e);

@@ -7,6 +7,9 @@ public class Document extends BaseEntity {
     private String name;
     Pack pack;
 
+    public Document() {
+    }
+
     public Document(XWPFDocument xwpfDocument, String name) {
         this.xwpfDocument = xwpfDocument;
         this.name = name;

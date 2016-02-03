@@ -10,9 +10,9 @@
 </head>
 <body>
     <ul>
-        <jsp:useBean id="packs" scope="session" type="java.util.ArrayList"/>
+        <jsp:useBean id="packs" scope="session" type="java.util.List"/>
         <c:forEach items="${packs}" var="pack">
-            <li>$(pack.name)</li>
+            <li><a href="${pageContext.request.contextPath}/formGenerator?packid=${pack.id}">Заполнить $(pack.name)</a></li>
         </c:forEach>
     </ul>
     <a href="${pageContext.request.contextPath}/main">Создать пакет</a>

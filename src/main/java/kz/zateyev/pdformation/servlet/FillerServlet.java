@@ -1,6 +1,7 @@
 package kz.zateyev.pdformation.servlet;
 
 import kz.zateyev.pdformation.entity.Document;
+import kz.zateyev.pdformation.entity.Pack;
 import kz.zateyev.pdformation.entity.Replacer;
 import kz.zateyev.pdformation.entity.Tag;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -26,13 +27,14 @@ public class FillerServlet extends HttpServlet {
         String filepath = (String)session.getAttribute("filepath");
         String fileName = (String) session.getAttribute("fileName");
         Set<Tag> tags = (Set<Tag>)session.getAttribute("tags");
-        XWPFDocument doc = new XWPFDocument(new FileInputStream(filepath + fileName));
-        Document document = new Document(doc, fileName);
+        /*XWPFDocument doc = new XWPFDocument(new FileInputStream(filepath + fileName));
+        Document document = new Document(doc, fileName);*/
         for (Tag tag : tags) {
             map.put(tag.getName(), request.getParameter(tag.getName()));
         }
+        Pack pack = (Pack) session.getAttribute("pack");
         Replacer replacer = new Replacer(map);
-        replacer.insertReplacers(document);
+        replacer.insertReplacers(pack);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/formed-document.jsp");
         dispatcher.forward(request, response);
     }

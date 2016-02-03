@@ -53,7 +53,7 @@ public class MultipleUploadServlet extends HttpServlet {
             Pack initPack = new Pack();
             initPack.setName(packName);
             initPack.setUser(user);
-            initPack.setLocation(filepath + File.separator);
+            initPack.setLocation(filepath);
             DaoFactory jdbcDaoFactory = DaoFactory.getDaoFactory(DaoFactory.JDBC);
             PackDao jdbcPackDao = jdbcDaoFactory.getPackDao();
             Pack pack = jdbcPackDao.insert(initPack);

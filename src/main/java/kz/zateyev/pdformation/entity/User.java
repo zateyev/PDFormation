@@ -3,8 +3,16 @@ package kz.zateyev.pdformation.entity;
 public class User extends BaseEntity {
     private String firstName;
     private String email;
-    private String login;
     private String password;
+
+    public User() {
+    }
+
+    public User(String firstName, String email, String password) {
+        this.firstName = firstName;
+        this.email = email;
+        this.password = password;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -20,14 +28,6 @@ public class User extends BaseEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getPassword() {

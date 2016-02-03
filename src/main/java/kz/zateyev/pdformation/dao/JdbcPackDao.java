@@ -16,7 +16,25 @@ import static kz.zateyev.pdformation.dao.JdbcDaoFactory.freeConnection;
 public class JdbcPackDao implements PackDao {
     @Override
     public Pack findById(Long id) {
-        return null;
+        ResultSet resultSet;
+        PreparedStatement preparedStatement;
+        Connection connection = createConnection();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT NAME, ID_USER, LOCATION FROM PACK WHERE ID=?");
+            preparedStatement.setLong(1, id);
+            resultSet = preparedStatement.executeQuery();
+            Pack pack = new Pack();
+            while (resultSet.next()) {
+                pack.setId(id);
+                pack.setName(resultSet.getString("NAME"));
+                pack.setLocation(resultSet.getString("LOCATION"));
+            }
+            return pack;
+        } catch (SQLException e) {
+            throw new DaoException();
+        } finally {
+            freeConnection(connection);
+        }
     }
 
     @Override
