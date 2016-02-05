@@ -11,6 +11,31 @@ import static kz.zateyev.pdformation.dao.JdbcDaoFactory.createConnection;
 import static kz.zateyev.pdformation.dao.JdbcDaoFactory.freeConnection;
 
 public class JdbcUserDao implements UserDao {
+    @Override
+    public User find(String email, String password) {
+        ResultSet resultSet;
+        PreparedStatement preparedStatement;
+        Connection connection = createConnection();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT ID, FIRSTNAME FROM USER WHERE EMAIL = ? AND PASSWORD = ?");
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+            resultSet = preparedStatement.executeQuery();
+            boolean found = resultSet.next();
+            if (!found) return null;
+            User user = new User();
+            user.setId(resultSet.getLong("ID"));
+            user.setFirstName(resultSet.getString("FIRSTNAME"));
+            user.setEmail(email);
+            user.setPassword(password);
+            return user;
+        } catch (SQLException e) {
+            throw new DaoException();
+        } finally {
+            freeConnection(connection);
+        }
+    }
+
     public User findById(Long id) {
         ResultSet resultSet;
         PreparedStatement preparedStatement;

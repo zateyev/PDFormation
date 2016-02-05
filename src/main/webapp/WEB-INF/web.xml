@@ -67,12 +67,12 @@
         <url-pattern>/formGenerator</url-pattern>
     </servlet-mapping>
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>FrontControllerServlet</servlet-name>
         <servlet-class>kz.zateyev.pdformation.servlet.FrontControllerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontControllerServlet</servlet-name>
         <url-pattern>/controller</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 </web-app>

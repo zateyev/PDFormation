@@ -25,7 +25,8 @@
   <input type="submit" />
 </form>
 
-<form action="${pageContext.request.contextPath}/signIn" method="post" class="form">
+<form action="${pageContext.request.contextPath}/login" method="post" class="form">
+    <h2>${pageContext.request.contextPath}/signIn</h2>
     <label><fmt:message key="login" /></label>
     <input name="email" type="text" placeholder="email">
     <input name="password" type="password" placeholder="<fmt:message key="password" />">

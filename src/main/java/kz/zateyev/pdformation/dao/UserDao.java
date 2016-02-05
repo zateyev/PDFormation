@@ -3,6 +3,8 @@ package kz.zateyev.pdformation.dao;
 import kz.zateyev.pdformation.entity.User;
 
 public interface UserDao {
+    User find(String email, String password);
+
     User findById(Long l);
 
     User findByEmail(String email);

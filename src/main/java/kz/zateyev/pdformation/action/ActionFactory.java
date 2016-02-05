@@ -10,11 +10,12 @@ public class ActionFactory {
     public ActionFactory() {
         actions = new HashMap<>();
         actions.put("POST/register", new RegisterAction());
+        actions.put("POST/login", new LoginAction());
     }
 
     public Action getAction(HttpServletRequest request) {
         String method = request.getMethod();
-        String action = request.getParameter("action");
-        return actions.get(method + "/" + action);
+        String action = request.getRequestURI().substring(request.getContextPath().length());
+        return actions.get(method + action);
     }
 }
