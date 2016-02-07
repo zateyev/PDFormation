@@ -5,15 +5,6 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>MainServlet</servlet-name>
-        <servlet-class>kz.zateyev.pdformation.servlet.MainServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MainServlet</servlet-name>
-        <url-pattern>/main</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>UploadServlet</servlet-name>
         <servlet-class>kz.zateyev.pdformation.servlet.UploadServlet</servlet-class>
     </servlet>
@@ -41,30 +32,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>SignInServlet</servlet-name>
-        <servlet-class>kz.zateyev.pdformation.servlet.SignInServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SignInServlet</servlet-name>
-        <url-pattern>/signIn</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>MultipleUploadServlet</servlet-name>
         <servlet-class>kz.zateyev.pdformation.servlet.MultipleUploadServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MultipleUploadServlet</servlet-name>
         <url-pattern>/multipleUpload</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>FormGeneratorServlet</servlet-name>
-        <servlet-class>kz.zateyev.pdformation.servlet.FormGeneratorServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FormGeneratorServlet</servlet-name>
-        <url-pattern>/formGenerator</url-pattern>
     </servlet-mapping>
 
     <!--<servlet>

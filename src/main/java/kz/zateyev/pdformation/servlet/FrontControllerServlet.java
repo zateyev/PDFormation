@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "FrontControllerServlet", urlPatterns = {"/register", "/login"})
+@WebServlet(name = "FrontControllerServlet", urlPatterns = {"/register", "/login", "/logout", "/form"})
 public class FrontControllerServlet extends HttpServlet {
     private ActionFactory factory;
 
@@ -25,7 +25,10 @@ public class FrontControllerServlet extends HttpServlet {
         }
         req.setCharacterEncoding("UTF-8");
         View view = action.execute(req, resp);
-        req.getRequestDispatcher("/" + view.getPath() + ".jsp").forward(req, resp);
+        if (view.isRedirect())
+            resp.sendRedirect(req.getContextPath() + "/" + view.getPath() + ".jsp");
+        else
+            req.getRequestDispatcher("/" + view.getPath() + ".jsp").forward(req, resp);
     }
 
     @Override
