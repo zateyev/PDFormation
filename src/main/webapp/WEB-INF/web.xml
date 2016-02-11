@@ -14,24 +14,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>FillerServlet</servlet-name>
-        <servlet-class>kz.zateyev.pdformation.servlet.FillerServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FillerServlet</servlet-name>
-        <url-pattern>/filler</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>DownloadServlet</servlet-name>
-        <servlet-class>kz.zateyev.pdformation.servlet.DownloadServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DownloadServlet</servlet-name>
-        <url-pattern>/download</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>MultipleUploadServlet</servlet-name>
         <servlet-class>kz.zateyev.pdformation.servlet.MultipleUploadServlet</servlet-class>
     </servlet>
