@@ -4,24 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <servlet>
-        <servlet-name>UploadServlet</servlet-name>
-        <servlet-class>kz.zateyev.pdformation.servlet.UploadServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UploadServlet</servlet-name>
-        <url-pattern>/upload</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>MultipleUploadServlet</servlet-name>
-        <servlet-class>kz.zateyev.pdformation.servlet.MultipleUploadServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MultipleUploadServlet</servlet-name>
-        <url-pattern>/multipleUpload</url-pattern>
-    </servlet-mapping>
-
     <!--<servlet>
         <servlet-name>FrontControllerServlet</servlet-name>
         <servlet-class>kz.zateyev.pdformation.servlet.FrontControllerServlet</servlet-class>

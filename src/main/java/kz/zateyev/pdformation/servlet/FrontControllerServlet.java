@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "FrontControllerServlet", urlPatterns = {"/register", "/login", "/logout", "/form", "/filler", "/download"})
+@WebServlet(name = "FrontControllerServlet", urlPatterns = {"/register", "/login", "/logout", "/form", "/filler", "/download", "/upload"})
 public class FrontControllerServlet extends HttpServlet {
     private ActionFactory factory;
 

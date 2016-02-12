@@ -12,6 +12,7 @@ public class ActionFactory {
         actions.put("POST/register", new RegisterAction());
         actions.put("POST/login", new LoginAction());
         actions.put("POST/filler", new FillerAction());
+        actions.put("POST/upload", new UploadAction());
         actions.put("GET/form", new FormGeneratorAction());
         actions.put("GET/logout", new LogoutAction());
         actions.put("GET/download", new DownloadAction());
