@@ -12,7 +12,7 @@
 <ul>
     <jsp:useBean id="packs" scope="session" type="java.util.List"/>
     <c:forEach items="${packs}" var="pack">
-            <li><a href="${pageContext.request.contextPath}/form?packid=${pack.id}">Заполнить ${pack.name}</a></li>
+            <li><a href="${pageContext.request.contextPath}/form?packid=${pack.id}">Заполнить ${pack.name}</a>   <a href="${pageContext.request.contextPath}/remove?packid=${pack.id}">Удалить ${pack.name}</a></li>
         </c:forEach>
     </ul>
     <a href="create-pack.jsp">Создать пакет</a>

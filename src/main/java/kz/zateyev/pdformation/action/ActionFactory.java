@@ -16,6 +16,7 @@ public class ActionFactory {
         actions.put("GET/form", new FormGeneratorAction());
         actions.put("GET/logout", new LogoutAction());
         actions.put("GET/download", new DownloadAction());
+        actions.put("GET/remove", new RemoveAction());
     }
 
     public Action getAction(HttpServletRequest request) {

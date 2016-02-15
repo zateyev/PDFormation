@@ -105,6 +105,19 @@ public class JdbcPackDao implements PackDao {
 
     @Override
     public boolean removeById(Long id) {
-        return false;
+        DaoFactory jdbcDaoFactory = DaoFactory.getDaoFactory(DaoFactory.JDBC);
+        DocumentDao jdbcDocumentDao = jdbcDaoFactory.getDocumentDao();
+        Connection connection = createConnection();
+        PreparedStatement preparedStatement;
+        jdbcDocumentDao.removeByPackId(id);
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "DELETE FROM PACK WHERE ID=?");
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
     }
 }

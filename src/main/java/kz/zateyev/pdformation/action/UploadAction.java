@@ -27,6 +27,8 @@ import java.util.ResourceBundle;
 public class UploadAction implements Action {
     @Override
     public View execute(HttpServletRequest request, HttpServletResponse response) {
+        DaoFactory jdbcDaoFactory = DaoFactory.getDaoFactory(DaoFactory.JDBC);
+        PackDao jdbcPackDao = jdbcDaoFactory.getPackDao();
         String packName = "Hosting"; //request.getParameter("packname");
         ResourceBundle resourceBundle = ResourceBundle.getBundle("app");
         String filepath = resourceBundle.getString("upload.location");
@@ -48,8 +50,6 @@ public class UploadAction implements Action {
             initPack.setName(packName);
             initPack.setUser(user);
             initPack.setLocation(filepath);
-            DaoFactory jdbcDaoFactory = DaoFactory.getDaoFactory(DaoFactory.JDBC);
-            PackDao jdbcPackDao = jdbcDaoFactory.getPackDao();
             Pack pack = jdbcPackDao.insert(initPack);
             DocumentDao jdbcDocumentDao = jdbcDaoFactory.getDocumentDao();
             while (itr.hasNext()) {
@@ -70,6 +70,8 @@ public class UploadAction implements Action {
                 }
             }
         }
+        List<Pack> packs = jdbcPackDao.findByUser(user);
+        session.setAttribute("packs", packs);
         return new View("my-packs", true);
     }
 }

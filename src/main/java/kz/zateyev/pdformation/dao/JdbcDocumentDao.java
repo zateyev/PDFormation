@@ -84,6 +84,20 @@ public class JdbcDocumentDao implements DocumentDao {
     }
 
     @Override
+    public boolean removeByPackId(Long id) {
+        Connection connection = createConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement("DELETE FROM DOCUMENT WHERE PACK_ID=?");
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+    }
+
+    @Override
     public boolean remove(Document document) {
         return false;
     }

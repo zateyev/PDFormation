@@ -11,6 +11,7 @@ public interface DocumentDao {
     Document findByName(String name);
     List<Document> findByPack(Pack pack);
     Document insert(Document document);
+    boolean removeByPackId(Long id);
     boolean remove(Document document);
     boolean removeById(Long id);
 }
