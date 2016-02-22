@@ -2,6 +2,8 @@ package kz.zateyev.pdformation.entity;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
+import java.io.File;
+
 public class Document extends BaseEntity {
     private XWPFDocument xwpfDocument;
     private String name;
@@ -37,5 +39,10 @@ public class Document extends BaseEntity {
 
     public void setPack(Pack pack) {
         this.pack = pack;
+    }
+
+    public boolean delete() {
+        File file = new File(this.getPack().getLocation() + this.getName());
+        return file.delete();
     }
 }

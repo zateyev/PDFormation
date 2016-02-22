@@ -20,7 +20,7 @@ public class RegisterAction implements Action {
         if (!loginValid) {
             HttpSession session = request.getSession();
             session.setAttribute("emailError", "emailError");
-            return new View("register", true);
+            return new View("register", false);
         }
 
         User user = new User(firstName, email, password);

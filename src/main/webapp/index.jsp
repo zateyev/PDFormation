@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -10,7 +10,10 @@
 <html lang="${language}">
 <head>
   <meta charset="UTF-8">
-  <title>File Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Формировка договора</title>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="jumbotron-narrow.css">
 </head>
 <body>
 <form>
@@ -21,16 +24,18 @@
     </select>
 </form>
 
-<%--<form method="POST" action="${pageContext.request.contextPath}/upload" enctype="multipart/form-data" >
-  <input type="file" name="file" id="file" />
-  <input type="submit" />
-</form>--%>
+<div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> <fmt:message key="nav.home" /></a></li>
+            <li><a href="login.jsp"><fmt:message key="login" /></a></li>
+            <li><a href="register.jsp"><fmt:message key="nav.reg" /></a></li>
+        </ul>
+        <h1 class="text-muted"><fmt:message key="project.name" /></h1>
+    </div>
 
-<form action="${pageContext.request.contextPath}/login" method="post" class="form">
-    <label><fmt:message key="login" /></label>
-    <input name="email" type="text" placeholder="email">
-    <input name="password" type="password" placeholder="<fmt:message key="password" />">
-    <button><fmt:message key="submit" /></button>
-</form>
+    <%@include file="content.jspf" %>
+    <%@include file="footer.jspf" %>
+</div>
 </body>
 </html>
