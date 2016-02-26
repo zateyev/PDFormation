@@ -18,8 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,7 +27,7 @@ public class UploadAction implements Action {
     public View execute(HttpServletRequest request, HttpServletResponse response) {
         DaoFactory jdbcDaoFactory = DaoFactory.getDaoFactory(DaoFactory.JDBC);
         PackDao jdbcPackDao = jdbcDaoFactory.getPackDao();
-        String packName = "Hosting"; //request.getParameter("packname");
+        String value = null;
         ResourceBundle resourceBundle = ResourceBundle.getBundle("app");
         String filepath = resourceBundle.getString("upload.location");
         HttpSession session = request.getSession();
@@ -47,7 +45,6 @@ public class UploadAction implements Action {
             }
             Iterator itr = items.iterator();
             Pack initPack = new Pack();
-            initPack.setName(packName);
             initPack.setUser(user);
             initPack.setLocation(filepath);
             Pack pack = jdbcPackDao.insert(initPack);
@@ -55,6 +52,7 @@ public class UploadAction implements Action {
             while (itr.hasNext()) {
                 FileItem item = (FileItem) itr.next();
                 if (item.isFormField()) {
+                    value = item.getString();
                 } else {
                     try {
                         String itemName = item.getName();
@@ -69,6 +67,8 @@ public class UploadAction implements Action {
                     }
                 }
             }
+            pack.setName(value);
+            jdbcPackDao.update(pack);
         }
         List<Pack> packs = jdbcPackDao.findByUser(user);
         session.setAttribute("packs", packs);

@@ -70,6 +70,19 @@ public class JdbcPackDao implements PackDao {
 
     @Override
     public void update(Pack pack) {
+        Connection connection = createConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "UPDATE PACK SET NAME=?, ID_USER=?, LOCATION=? WHERE ID=?");
+            preparedStatement.setString(1, pack.getName());
+            preparedStatement.setLong(2, pack.getUser().getId());
+            preparedStatement.setString(3, pack.getLocation());
+            preparedStatement.setLong(4, pack.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
     }
 
     @Override

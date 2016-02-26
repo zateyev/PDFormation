@@ -20,7 +20,7 @@
 <div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+            <li class="active"><a href="my-packs.jsp"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
             <li><a href="#">${user.firstName}</a></li>
             <li><a href="create-pack.jsp">Создать пакет</a></li>
             <li>

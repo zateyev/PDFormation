@@ -18,7 +18,7 @@ public class FillerAction implements Action {
         HttpSession session = request.getSession(false);
         Set<Tag> tags = (Set<Tag>)session.getAttribute("tags");
         for (Tag tag : tags) {
-            map.put(tag.getName(), request.getParameter(tag.getName()));
+            map.put("{" + tag.getName() + "}", request.getParameter(tag.getName()));
         }
         Pack pack = (Pack) session.getAttribute("pack");
         Replacer replacer = new Replacer(map);
