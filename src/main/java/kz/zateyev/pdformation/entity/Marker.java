@@ -19,8 +19,19 @@ public class Marker {
         for (XWPFTable tbl : document.getXwpfDocument().getTables()) {
             for (XWPFTableRow row : tbl.getRows()) {
                 for (XWPFTableCell cell : row.getTableCells()) {
+
                     for (XWPFParagraph p : cell.getParagraphs()) {
                         sb.append(getText(p));
+                    }
+
+                    for (XWPFTable insTbl : cell.getTables()) {
+                        for (XWPFTableRow insRow : insTbl.getRows()) {
+                            for (XWPFTableCell insCell : insRow.getTableCells()) {
+                                for (XWPFParagraph p : insCell.getParagraphs()) {
+                                    sb.append(getText(p));
+                                }
+                            }
+                        }
                     }
                 }
             }
