@@ -25,10 +25,10 @@ public class App {
         documents.add(new Document(doc2, "Dogovor.docx"));
         Pack pack = new Pack("Hosting", documents);
 
-        /*Marker marker = new Marker();
-        System.out.println(marker.getTags(pack));*/
+        Marker marker = new Marker();
+        System.out.println(marker.getTags(pack));
 
-        Map<String, String> map = new HashMap<String, String>();
+        /*Map<String, String> map = new HashMap<String, String>();
         map.put("{RegularExpression}", "Регулярное выражение");
         map.put("{Word}", "Ворд");
         map.put("{str1}", "стр1");
@@ -40,6 +40,6 @@ public class App {
         //map.put("{RegularExpression2}", "Регулярное выражение2");
         //map.put("{str3}", "стр3");
         Replacer replacer = new Replacer(map);
-        replacer.insertReplacers(pack);
+        replacer.insertReplacers(pack);*/
     }
 }
