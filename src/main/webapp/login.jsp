@@ -10,7 +10,7 @@
 <html lang="${language}">
 <head>
   <meta charset="UTF-8">
-  <title>Вход в систему</title>
+  <title><fmt:message key="login" /></title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>

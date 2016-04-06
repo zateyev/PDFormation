@@ -3,9 +3,11 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="i18n" />
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="i18n"/>
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +31,7 @@
                 </form>
             </li>
         </ul>
-        <h1 class="text-muted"><fmt:message key="project.name" /></h1>
+        <h1 class="text-muted"><fmt:message key="project.name"/></h1>
     </div>
 
     <h3>Мои пакеты</h3>

@@ -10,16 +10,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sign up</title>
+  <title><fmt:message key="register" /></title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/register" method="post" class="form">
-  <label>registration</label>
+  <label><fmt:message key="register" /></label>
   <input name="firstName" type="text" placeholder="Name">
   <input name="email" type="text" placeholder="Your email">
   <input name="password" type="password" placeholder="Create a password">
-  <button>Sign up</button>
+  <button><fmt:message key="register" /></button>
 </form>
 </body>
 </html>
